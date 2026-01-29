@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Alpha Sales RH — Recrutamento Comercial de Alta Performance. Contrate vendedores e SDRs ou envie seu perfil." />
+  <title>Alpha Sales RH | Recrutamento Comercial</title>
+
+  <style>
+    :root{
+      --bg:#070707;
+      --panel:#0f0f10;
+      --panel2:#121214;
+      --text:#f5f5f5;
+      --muted:#b9b9c0;
+      --line:rgba(255,255,255,.10);
+      --gold:#C9A24D;
+      --gold2:#f0d48a;
+      --shadow: 0 16px 60px rgba(0,0,0,.55);
+      --radius:18px;
+      --radius2:22px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(900px 500px at 75% -10%, rgba(201,162,77,.22), transparent 60%),
+        radial-gradient(700px 450px at 15% 10%, rgba(255,255,255,.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:22px 16px 90px}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(7,7,7,.92), rgba(7,7,7,.66));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .header-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 16px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(145deg, rgba(201,162,77,.95), rgba(201,162,77,.55));
+      box-shadow: 0 12px 30px rgba(201,162,77,.18);
+      display:grid; place-items:center;
+      color:#111; font-weight:900; letter-spacing:.6px;
+      user-select:none;
+    }
+    .brand-txt{display:flex; flex-direction:column}
+    .brand-txt strong{font-size:14px; letter-spacing:.6px}
+    .brand-txt span{font-size:12px; color:var(--muted); margin-top:2px}
+
+    .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .nav a{
+      font-size:13px; color:var(--muted);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding:9px 12px;
+      border-radius:999px;
+      transition: border-color .2s ease, transform .08s ease;
+    }
+    .nav a:hover{border-color: rgba(201,162,77,.45); transform: translateY(-1px); color:#fff}
+
+    /* Layout */
+    .hero{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panel-pad{padding:22px}
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:13px; color:var(--muted);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.24);
+      padding:8px 12px;
+      border-radius:999px;
+    }
+    .dot{
+      width:9px; height:9px; border-radius:99px;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(201,162,77,.12);
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(30px, 3.2vw, 48px);
+      line-height:1.08;
+      letter-spacing:-.7px;
+    }
+    .sub{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:16px;
+      max-width: 62ch;
+    }
+
+    /* CTA buttons */
+    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color:#fff;
+      font-weight:800;
+      cursor:pointer;
+      min-height:46px;
+      transition: transform .08s ease, border-color .2s ease, background .2s ease;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(201,162,77,.45)}
+    .btn-primary{
+      color:#111;
+      border:1px solid rgba(201,162,77,.65);
+      background: linear-gradient(145deg, rgba(201,162,77,.95), rgba(201,162,77,.62));
+    }
+    .btn-primary:hover{border-color: rgba(201,162,77,.92)}
+    .btn-block{width:100%}
+
+    /* Feature cards */
+    .cards{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .card{
+      background: rgba(0,0,0,.28);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding:14px;
+    }
+    .card h3{margin:0 0 6px; font-size:15px; letter-spacing:-.2px}
+    .card p{margin:0; color:var(--muted); font-size:13px}
+
+    .divider{height:1px; background: rgba(255,255,255,.10); margin:16px 0}
+
+    /* Right column offer box */
+    .stack{display:grid; gap:12px}
+    .box{
+      background: rgba(0,0,0,.30);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .box-title{font-weight:900; letter-spacing:.2px; margin-bottom:6px}
+    .box-muted{color:var(--muted); font-size:14px; margin:0 0 10px}
+    .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .tag{
+      font-size:12px;
+      color: rgba(255,255,255,.86);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding:7px 10px;
+      border-radius:999px;
+    }
+    .tag strong{color:var(--gold2)}
+
+    /* Form */
+    form{display:grid; gap:10px; margin-top:10px}
+    label{font-size:13px; color:var(--muted)}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      outline:none;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(201,162,77,.60);
+      box-shadow: 0 0 0 4px rgba(201,162,77,.14);
+    }
+    textarea{min-height:110px; resize:vertical}
+    .two{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .hint{font-size:12px; color:var(--muted); margin-top:6px}
+    .footer{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+      opacity:.9;
+    }
+
+    /* Mobile sticky bar */
+    .sticky-cta{
+      position:fixed; left:0; right:0; bottom:0; z-index:50;
+      background: rgba(7,7,7,.92);
+      border-top:1px solid rgba(255,255,255,.10);
+      padding:10px 12px;
+      backdrop-filter: blur(10px);
+      display:none;
+    }
+    .sticky-cta .row{display:grid; grid-template-columns: 1fr 1fr; gap:10px; max-width:var(--max); margin:0 auto}
+    .sticky-cta a{min-height:46px}
+
+    /* Responsivo */
+    @media (max-width: 980px){
+      .hero{grid-template-columns: 1fr}
+      .cards{grid-template-columns: 1fr}
+      .two{grid-template-columns: 1fr}
+      .nav{display:none}
+      .sticky-cta{display:block}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">A</div>
+        <div class="brand-txt">
+          <strong>ALPHA SALES RH</strong>
+          <span>Recrutamento Comercial • Alta Performance</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navegação">
+        <a href="#empresas">Para Empresas</a>
+        <a href="#candidatos">Para Candidatos</a>
+        <a href="#formulario">Enviar Perfil</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <main class="hero">
+      <!-- Coluna Esquerda -->
+      <section class="panel" id="topo">
+        <div class="panel-pad">
+          <div class="kicker"><span class="dot"></span> Recrutamento de Alta Performance Comercial</div>
+
+          <h1>Contrate vendedores e SDRs que executam — com processo objetivo e shortlist validada.</h1>
+
+          <p class="sub">
+            A Alpha Sales RH existe pra reduzir erro de contratação e acelerar resultado. Aqui você não recebe “pilha de currículo”.
+            Você recebe candidatos filtrados por perfil + execução.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://wa.me/5565981041009?text=Ol%C3%A1%21%20Sou%20empresa%20e%20quero%20contratar%20vendedores%2FSDRs%20com%20a%20Alpha%20Sales%20RH.%20Podemos%20falar%3F" target="_blank" rel="noopener">
+              Falar no WhatsApp (Empresas)
+            </a>
+            <a class="btn" href="#formulario">Enviar perfil (Candidatos)</a>
+          </div>
+
+          <div class="cards">
+            <div class="card">
+              <h3>Alinhamento de vaga</h3>
+              <p>Meta, ticket, rotina, script e perfil ideal. Sem achismo.</p>
+            </div>
+            <div class="card">
+              <h3>Triagem forte</h3>
+              <p>Filtros + entrevista focada em execução e números.</p>
+            </div>
+            <div class="card">
+              <h3>Shortlist final</h3>
+              <p>Você recebe poucos nomes, mas os certos, prontos pra etapa final.</p>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <section id="empresas">
+            <h2 style="margin:0 0 8px; font-size:20px; letter-spacing:-.2px">Para empresas</h2>
+            <p class="sub" style="margin-bottom:10px">
+              Quer abrir uma vaga e parar de perder tempo com candidato fraco? Chama no WhatsApp e te mando o fluxo + valores.
+            </p>
+
+            <div class="tagrow">
+              <span class="tag"><strong>Foco:</strong> Vendedores • SDRs</span>
+              <span class="tag"><strong>Modelo:</strong> Presencial • Híbrido • Remoto</span>
+              <span class="tag"><strong>Entrega:</strong> shortlist validada</span>
+            </div>
+
+            <div class="cta-row" style="margin-top:12px">
+              <a class="btn btn-primary" href="https://wa.me/5565981041009?text=Ol%C3%A1%21%20Quero%20abrir%20uma%20vaga%20com%20a%20Alpha%20Sales%20RH.%20Me%20envie%20o%20processo%20e%20valores%2C%20por%20favor." target="_blank" rel="noopener">
+                Quero abrir uma vaga
+              </a>
+              <a class="btn" href="#candidatos">Sou candidato</a>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- Coluna Direita -->
+      <aside class="panel" id="candidatos">
+        <div class="panel-pad">
+          <div class="kicker"><span class="dot"></span> Para candidatos</div>
+
+          <div class="stack">
+            <div class="box">
+              <div class="box-title">WhatsApp</div>
+              <p class="box-muted">65 98104-1009</p>
+
+              <a class="btn btn-primary btn-block" href="https://wa.me/5565981041009?text=Ol%C3%A1%21%20Quero%20me%20candidatar.%20Posso%20enviar%20meu%20perfil%3F" target="_blank" rel="noopener">
+                Chamar no WhatsApp
+              </a>
+
+              <div class="hint">
+                Dica: mande <b>Nome</b>, <b>Cidade</b>, <b>experiência</b>, <b>modelo (presencial/remoto)</b> e <b>resultados</b>.
+              </div>
+            </div>
+
+            <div class="box" id="formulario">
+              <div class="box-title">Formulário de candidatura</div>
+              <p class="box-muted">Quanto mais direto e com números, melhor seu posicionamento.</p>
+
+              <form action="https://formspree.io/f/mvzrrwoq" method="POST">
+                <input type="hidden" name="origem" value="Landing Page - Alpha Sales RH" />
+
+                <div>
+                  <label for="nome">Nome completo</label>
+                  <input id="nome" name="nome" type="text" placeholder="Seu nome" required />
+                </div>
+
+                <div>
+                  <label for="whats">WhatsApp (com DDD)</label>
+                  <input id="whats" name="whatsapp" type="tel" placeholder="(65) 98104-1009" required />
+                </div>
+
+                <div class="two">
+                  <div>
+                    <label for="cidade">Cidade/UF</label>
+                    <input id="cidade" name="cidade" type="text" placeholder="Ex.: Rio de Janeiro/RJ" required />
+                  </div>
+                  <div>
+                    <label for="modelo">Modelo de trabalho</label>
+                    <select id="modelo" name="modelo_trabalho" required>
+                      <option value="" disabled selected>Selecione</option>
+                      <option>Presencial</option>
+                      <option>Híbrido</option>
+                      <option>Remoto</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="two">
+                  <div>
+                    <label for="cargo">Área de interesse</label>
+                    <select id="cargo" name="area_interesse" required>
+                      <option value="" disabled selected>Selecione</option>
+                      <option>Consultor(a) Comercial</option>
+                      <option>SDR / Pré-vendas</option>
+                      <option>Closer</option>
+                      <option>Coordenador(a) Comercial</option>
+                      <option>Outro</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="exp">Experiência em vendas</label>
+                    <select id="exp" name="experiencia" required>
+                      <option value="" disabled selected>Selecione</option>
+                      <option>0–6 meses</option>
+                      <option>6–12 meses</option>
+                      <option>1–2 anos</option>
+                      <option>2–5 anos</option>
+                      <option>5+ anos</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="resultado">Resultados / metas (objetivo)</label>
+                  <textarea id="resultado" name="resultados" placeholder="Ex.: Batia R$ 120k/mês, ticket médio R$ 3.500, inbound + prospecção, conversão 18%..."></textarea>
+                  <div class="hint">Sem números? Descreva rotina: inbound, outbound, presencial, consultivo etc.</div>
+                </div>
+
+                <div>
+                  <label for="linkedin">LinkedIn / Portfólio (opcional)</label>
+                  <input id="linkedin" name="linkedin" type="url" placeholder="https://linkedin.com/in/..." />
+                </div>
+
+                <button class="btn btn-primary btn-block" type="submit">Enviar candidatura</button>
+
+                <div class="hint">
+                  Ao enviar, você concorda em receber contato da Alpha Sales RH por WhatsApp.
+                </div>
+              </form>
+            </div>
+
+            <div class="footer">
+              © <span id="year"></span> Alpha Sales RH • Recrutamento Comercial
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- CTA fixo mobile -->
+  <div class="sticky-cta" role="region" aria-label="Ações rápidas">
+    <div class="row">
+      <a class="btn btn-primary" href="https://wa.me/5565981041009?text=Ol%C3%A1%21%20Sou%20empresa%20e%20quero%20contratar%20vendedores%2FSDRs%20com%20a%20Alpha%20Sales%20RH.%20Podemos%20falar%3F" target="_blank" rel="noopener">
+        WhatsApp (Empresas)
+      </a>
+      <a class="btn" href="#formulario">Enviar Perfil</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
